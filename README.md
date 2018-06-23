@@ -8,9 +8,9 @@ This project is a [TensorFlow](https://www.tensorflow.org/) implementation of [*
 </p>
 
 Our proposed model consists three components:
-- *Demonstration Encoder* receives a demonstration video as input and produces an embedding that cap- tures an agent’s actions and perception.
-- *Summarizer Module* discovers and summarizes where actions diverge between demonstrations and upon which branching conditions subsequent actions are taken.
-- *Program Decoder* represents the summarized under- standing of demonstrations as a code sequence.
+- **Demonstration Encoder** receives a demonstration video as input and produces an embedding that cap- tures an agent’s actions and perception.
+- **Summarizer Module** discovers and summarizes where actions diverge between demonstrations and upon which branching conditions subsequent actions are taken.
+- **Program Decoder** represents the summarized under- standing of demonstrations as a code sequence.
 
 The illustration of the overall architecture is as follows. For more details, please refer to the paper.
 
@@ -22,10 +22,10 @@ The illustration of the overall architecture is as follows. For more details, pl
 
 ## Directories
 The structure of the repository:
-- ./: training and evaluation scripts
-- ./models: network models used for the experiments
-- ./karel: karel environment including dsl, interpreter and dataset generator / loader
-- ./vizdoom_world: vizdoom environment including dsl, interpreter and dataset generator / loader
+- **./**: training and evaluation scripts
+- **./models**: network models used for the experiments
+- **./karel**: karel environment including dsl, interpreter and dataset generator / loader
+- **./vizdoom_world**: vizdoom environment including dsl, interpreter and dataset generator / loader
 
 ## Prerequisites
 

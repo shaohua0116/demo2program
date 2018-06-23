@@ -4,7 +4,7 @@ import h5py
 import numpy as np
 from cv2 import resize, INTER_AREA
 from tqdm import tqdm
-from vizdoom_world import Vizdoom_world
+from vizdoom_env import Vizdoom_env
 from dsl.dsl_hit_analysis import hit_count
 from dsl.vocab import VizDoomDSLVocab
 
@@ -25,8 +25,8 @@ ft = h5py.File(args.data_file, 'r')
 
 perception_type = ft['data_info']['perception_type'].value
 vocab = VizDoomDSLVocab(perception_type=perception_type)
-world = Vizdoom_world(config='asset/default.cfg',
-                      perception_type=perception_type)
+world = Vizdoom_env(config='vizdoom_env/asset/default.cfg',
+                    perception_type=perception_type)
 world.init_game()
 id_dict = {}
 execute_correct = []

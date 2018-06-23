@@ -24,8 +24,8 @@ The illustration of the overall architecture is as follows. For more details, pl
 The structure of the repository:
 - **./**: training and evaluation scripts
 - **./models**: network models used for the experiments
-- **./karel**: karel environment including dsl, interpreter and dataset generator / loader
-- **./vizdoom_world**: vizdoom environment including dsl, interpreter and dataset generator / loader
+- **./karel_env**: karel environment including dsl, interpreter and dataset generator / loader
+- **./vizdoom_env**: vizdoom environment including dsl, interpreter and dataset generator / loader
 
 ## Prerequisites
 
@@ -44,19 +44,19 @@ The structure of the repository:
 ## Datasets
 
 ### KAREL
-- You can find the codes for the Karel environments in [this directory](./karel)
+- You can find the codes for the Karel environments in [this directory](./karel_env)
 - To generate a dataset for Karel environments including programs and demonstrations, use the following script.
 ```bash
-./karel/generate_dataset.sh
+./karel_env/generate_dataset.sh
 ```
 Default arguments are identical to the settings described in the paper.
 
 ### ViZDoom
 - To reproduce experiments in our paper, you need to install our [deterministic ViZDoom envrionment](https://github.com/HyeonwooNoh/ViZDoomDeterministic)
-- You can find the codes for the ViZDoom environments and detailed instructions in [this directory](./vizdoom_world)
+- You can find the codes for the ViZDoom environments and detailed instructions in [this directory](./vizdoom_env)
 - To generate a dataset (vizdoom_dataset, vizdoom_dataset_ifelse) for the ViZDoom environment including programs and demonstrations, use the following script.
 ```bash
-./vizdoom_world/generate_dataset.sh
+./vizdoom_env/generate_dataset.sh
 ```
 
 ## Usage

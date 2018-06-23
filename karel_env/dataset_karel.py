@@ -5,7 +5,7 @@ from __future__ import print_function
 import os.path as osp
 import numpy as np
 import h5py
-from karel.util import log
+from karel_env.util import log
 
 
 rs = np.random.RandomState(123)

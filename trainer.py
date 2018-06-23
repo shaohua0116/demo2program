@@ -59,9 +59,9 @@ class Trainer(object):
         self.batch_size = config.batch_size
 
         if config.dataset_type == 'karel':
-            from karel.input_ops_karel import create_input_ops
+            from karel_env.input_ops_karel import create_input_ops
         elif config.dataset_type == 'vizdoom':
-            from vizdoom_world.input_ops_vizdoom import create_input_ops
+            from vizdoom_env.input_ops_vizdoom import create_input_ops
         else:
             raise ValueError(config.dataset)
 
@@ -291,11 +291,11 @@ def main():
     config = parser.parse_args()
 
     if config.dataset_type == 'karel':
-        import karel.dataset_karel as dataset
+        import karel_env.dataset_karel as dataset
         dataset_train, dataset_test, dataset_val \
             = dataset.create_default_splits(config.dataset_path, num_k=config.num_k)
     elif config.dataset_type == 'vizdoom':
-        import vizdoom_world.dataset_vizdoom as dataset
+        import vizdoom_env.dataset_vizdoom as dataset
         dataset_train, dataset_test, dataset_val \
             = dataset.create_default_splits(config.dataset_path, num_k=config.num_k)
     else:

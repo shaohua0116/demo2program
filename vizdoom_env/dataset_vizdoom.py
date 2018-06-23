@@ -5,7 +5,7 @@ from __future__ import print_function
 import os.path as osp
 import numpy as np
 import h5py
-from vizdoom_world.util import log
+from vizdoom_env.util import log
 
 
 rs = np.random.RandomState(123)

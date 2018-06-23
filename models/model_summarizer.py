@@ -70,11 +70,11 @@ class Model(object):
 
         # Text
         if self.dataset_type == 'karel':
-            from karel.dsl import get_KarelDSL, get_KarelDSLSyntax
+            from karel_env.dsl import get_KarelDSL, get_KarelDSLSyntax
             self.vocab = get_KarelDSL(dsl_type=self.dsl_type, seed=123)
             self.dsl_syntax = get_KarelDSLSyntax(dsl_type=self.dsl_type, seed=123)
         else:
-            from vizdoom_world.dsl.vocab import VizDoomDSLVocab
+            from vizdoom_env.dsl.vocab import VizDoomDSLVocab
             self.vocab = VizDoomDSLVocab(perception_type=self.perception_type,
                                          level=self.level)
             self.dsl_syntax = None  # Not implemented yet
@@ -530,9 +530,9 @@ class Model(object):
 
         def check_correct_syntax(p_token, p_len, is_same_seq):
             if self.dataset_type == 'karel':
-                from karel.dsl.dsl_parse import parse
+                from karel_env.dsl.dsl_parse import parse
             elif self.dataset_type == 'vizdoom':
-                from vizdoom_world.dsl.dsl_parse import parse
+                from vizdoom_env.dsl.dsl_parse import parse
             is_correct = []
             for i in range(self.batch_size):
                 if is_same_seq[i] == 1:
@@ -628,7 +628,7 @@ class Model(object):
 
         def exact_program_compare_karel(p_token, p_len, is_correct_syntax,
                                         gt_token, gt_len):
-            from karel.dsl import dsl_enum_program
+            from karel_env.dsl import dsl_enum_program
 
             exact_program_correct = []
             for i in range(self.batch_size):
@@ -645,7 +645,7 @@ class Model(object):
 
         def exact_program_compare_vizdoom(p_token, p_len, is_correct_syntax,
                                           gt_token, gt_len):
-            from vizdoom_world.dsl import dsl_enum_program
+            from vizdoom_env.dsl import dsl_enum_program
 
             exact_program_correct = []
             for i in range(self.batch_size):
@@ -664,8 +664,8 @@ class Model(object):
                                           demo_k, h, w, depth,
                                           p_token, p_len, is_correct_syntax,
                                           is_same_seq):
-            from karel import karel
-            from karel.dsl.dsl_parse import parse
+            from karel_env import karel
+            from karel_env.dsl.dsl_parse import parse
 
             batch_pred_demos = []
             batch_pred_demo_len = []
@@ -708,12 +708,12 @@ class Model(object):
                                             demo_k, h, w, depth,
                                             p_token, p_len, is_correct_syntax,
                                             is_same_seq):
-            from vizdoom_world.vizdoom_world import Vizdoom_world
-            from vizdoom_world.dsl.dsl_parse import parse
+            from vizdoom_env.vizdoom_env import Vizdoom_env
+            from vizdoom_env.dsl.dsl_parse import parse
             from cv2 import resize, INTER_AREA
 
-            world = Vizdoom_world(config='vizdoom_world/asset/default.cfg',
-                                  perception_type=self.perception_type)
+            world = Vizdoom_env(config='vizdoom_env/asset/default.cfg',
+                                perception_type=self.perception_type)
             world.init_game()
             batch_pred_demos = []
             batch_pred_demo_len = []

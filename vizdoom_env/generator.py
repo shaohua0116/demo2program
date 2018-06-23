@@ -10,7 +10,7 @@ import numpy as np
 from cv2 import resize, INTER_AREA
 from tqdm import tqdm
 
-from vizdoom_world import Vizdoom_world
+from vizdoom_env import Vizdoom_env
 from dsl.dsl_parse import parse as vizdoom_parse
 from dsl.random_code_generator import DoomProgramGenerator
 from dsl.vocab import VizDoomDSLVocab
@@ -107,8 +107,8 @@ def generator(config):
     log.info('Initializing {} vizdoom environments...'.format(num_demo))
     for _ in range(num_demo):
         log.info('[{}/{}]'.format(_, num_demo))
-        world = Vizdoom_world(config="vizdoom_world/asset/default.cfg",
-                              perception_type='simple')
+        world = Vizdoom_env(config="vizdoom_env/asset/default.cfg",
+                            perception_type='simple')
         world.init_game()
         world_list.append(world)
     log.info('done')

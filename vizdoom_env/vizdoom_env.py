@@ -57,8 +57,8 @@ ATTACK_FRAME_SKIP = {
 }
 
 
-class Vizdoom_world(object):
-    def __init__(self, config='vizdoom_world/asset/default.cfg', verbose=False,
+class Vizdoom_env(object):
+    def __init__(self, config='vizdoom_env/asset/default.cfg', verbose=False,
                  perception_type='more_simple'):
         self.verbose = verbose
         self.game = DoomGame()

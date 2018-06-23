@@ -234,10 +234,10 @@ class Model(object):
                 power=1.0, name='scheduled_sampling')
         # Text
         if self.dataset_type == 'karel':
-            from karel.dsl import get_KarelDSL
+            from karel_env.dsl import get_KarelDSL
             self.vocab = get_KarelDSL(dsl_type=self.dsl_type, seed=123)
         else:
-            from vizdoom_world.dsl.vocab import VizDoomDSLVocab
+            from vizdoom_env.dsl.vocab import VizDoomDSLVocab
             self.vocab = VizDoomDSLVocab(perception_type=self.perception_type,
                                          level=self.level)
 

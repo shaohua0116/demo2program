@@ -43,9 +43,9 @@ class Evaler(object):
         self.batch_size = config.batch_size
 
         if config.dataset_type == 'karel':
-            from karel.input_ops_karel import create_input_ops
+            from karel_env.input_ops_karel import create_input_ops
         elif config.dataset_type == 'vizdoom':
-            from vizdoom_world.input_ops_vizdoom import create_input_ops
+            from vizdoom_env.input_ops_vizdoom import create_input_ops
         else:
             raise NotImplementedError("The dataset related code is not implemented.")
 
@@ -113,7 +113,7 @@ class Evaler(object):
                     self.output_dir,
                     'out_{}_{}'.format(self.checkpoint_name, self.dataset_split))
                 text_file = open('{}.txt'.format(base_name), 'w')
-                from karel.dsl import get_KarelDSL
+                from karel_env.dsl import get_KarelDSL
                 dsl = get_KarelDSL(dsl_type=self.dataset.dsl_type, seed=123)
 
                 hdf5_file = h5py.File('{}.hdf5'.format(base_name), 'w')
@@ -421,9 +421,9 @@ def main():
     config.write_summary = not config.no_write_summary
 
     if config.dataset_type == 'karel':
-        import karel.dataset_karel as dataset
-    elif config.dataset_type == 'vizdoom':
-        import vizdoom_world.dataset_vizdoom as dataset
+        import karel_env.dataset_karel as dataset
+    elif config.datasete_type == 'vizdoom':
+        import vizdoom_env.dataset_vizdoom as dataset
     else:
         raise ValueError(config.dataset)
 

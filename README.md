@@ -7,16 +7,18 @@ This project is a [TensorFlow](https://www.tensorflow.org/) implementation of [*
     <img src="asset/teaser.png" height="256"/>
 </p>
 
-Our proposed model consists three components:
-- **Demonstration Encoder** receives a demonstration video as input and produces an embedding that cap- tures an agent’s actions and perception.
+We introduce a summarizer module as part of our model to improve the network’s ability to integrate multiple demonstrations varying in behavior. We also employ a multi-task objective to encourage the model to learn meaningful intermediate representations for end-to-end training. Our proposed model consists three components:
+- **Demonstration Encoder** receives a demonstration video as input and produces an embedding that captures an agent’s actions and perception.
 - **Summarizer Module** discovers and summarizes where actions diverge between demonstrations and upon which branching conditions subsequent actions are taken.
-- **Program Decoder** represents the summarized under- standing of demonstrations as a code sequence.
+- **Program Decoder** represents the summarized understanding of demonstrations as a code sequence.
 
 The illustration of the overall architecture is as follows. For more details, please refer to the paper.
 
 <p align="center">
     <img src="asset/model.jpg" height="256"/>
 </p>
+
+Our method is evaluated on a fully observable, third-person environment (Karel environment) and a partially observable, egocentric game (ViZDoom environment). We show that our model is able to reliably synthesize underlying programs as well as capture diverse behaviors exhibited in demonstrations.
 
 \*This code is still being developed and subject to change.
 
@@ -109,7 +111,54 @@ python trainer.py --model induction_baseline --dataset_path /path/to/the/dataset
 python evaler.py --dataset_path /path/to/the/dataset/ --dataset_type [karel/vizdoom] [--train_dir /path/to/the/training/dir/ OR --checkpoint /path/to/the/trained/model]
 ```
 
+## Results
+
+### Karel environment
+
+| Methods                        | Execution | Program | Sequence |
+| ------------------------------ | :-------: | :-----: | :------: |
+| Induction baseline             |   62.8%   |    -    |    -     |
+| Synthesis baseline             |   64.1%   |  42.4%  |  35.7%   |
+| + summarizer (ours)            |   68.6%   |  45.3%  |  38.3%   |
+| +  multi-task loss (ours-full) |   72.1%   |  48.9%  |  41.0%   |
+
+- Effect of the summarizer module
+
+To verify the effectiveness of our proposed summarizer module, we conduct experiments where models are trained on varying numbers of demonstrations (k) and compare the execution accuracy.
+
+| Methods             |  k=3  |  k=5  | k=10  |
+| ------------------- | :---: | :---: | :---: |
+| Synthesis baseline  | 58.5% | 60.1% | 64.1% |
+| + summarizer (ours) | 60.6% | 63.1% | 68.6% |
+
+### ViZDoom environment
+
+| Methods            | Execution | Program | Sequence |
+| ------------------ | :-------: | :-----: | :------: |
+| Induction baseline |   35.1%   |    -    |    -     |
+| Synthesis baseline |   48.2%   |  39.9%  |  33.1%   |
+| Ours-full          |   78.4%   |  62.5%  |  53.2%   |
+
+- If-else experiment: 
+
+To verify the importance of inferring underlying conditions, we perform evaluation only with programs containing a single if-else statement with two branching consequences. This setting is sufficiently simple to isolate other diverse factors that might affect the evaluation result.
+
+| Methods            | Execution | Program | Sequence |
+| ------------------ | :-------: | :-----: | :------: |
+| Induction baseline |   26.5%   |    -    |    -     |
+| Synthesis baseline |   59.9%   |  44.4%  |  36.1%   |
+| Ours-full          |   89.4%   |  69.1%  |  58.8%   |
+
+- Generation over different number of seen demonstrations
+
+The baseline models and our model trained with 25 seen demonstration are evaluated with fewer or more seen demonstrations.
+
+<p align="center">
+    <img src="asset/generalization.png" height="256"/>
+</p> 
+
 ## Related works
+
 * [Leveraging Grammar and Reinforcement Learning for Neural Program Synthesis](https://openreview.net/forum?id=H1Xw62kRZ) in ICLR 2018
 * [RobustFill: Neural Program Learning under Noisy I/O](https://arxiv.org/abs/1703.07469) in ICML 2017
 * [DeepCoder: Learning to Write Programs](https://arxiv.org/abs/1611.01989) in ICLR 2017

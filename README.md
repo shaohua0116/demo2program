@@ -1,4 +1,4 @@
-# Pixel2Program
+# Neural Program Synthesis from Diverse Demonstration Videos (Demo2Program)
 
 ## Descriptions
 This project is a [TensorFlow](https://www.tensorflow.org/) implementation of [**Neural Program Synthesis from Diverse Demonstration Videos**](https://shaohua0116.github.io/demo2program/), which is published in ICML 2018. As interpreting decision making logic in demonstration videos is key to collaborating with and mimicking humans, we goal is to empower machines with this ability. To this end, we propose a neural program synthesizer that is able to explicitly synthesize underlying programs from behaviorally diverse and visually complicated demonstration videos, as illustrated in the following figure.
@@ -131,4 +131,5 @@ If you find this useful, please cite
 
 ## Authors
 [Shao-Hua Sun](http://shaohua0116.github.io/)\*, [Hyeonwoo Noh](http://cvlab.postech.ac.kr/~hyeonwoonoh/)\*, [Sriram Somasundaram](http://srirams32.github.io/), and [Joseph J. Lim](http://www-bcf.usc.edu/~limjj/)
+
 (\*Equal contribution)

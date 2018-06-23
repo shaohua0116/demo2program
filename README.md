@@ -1,7 +1,7 @@
 # Neural Program Synthesis from Diverse Demonstration Videos (Demo2Program)
 
 ## Descriptions
-This project is a [TensorFlow](https://www.tensorflow.org/) implementation of [**Neural Program Synthesis from Diverse Demonstration Videos**](https://shaohua0116.github.io/demo2program/), which is published in ICML 2018. As interpreting decision making logic in demonstration videos is key to collaborating with and mimicking humans, we goal is to empower machines with this ability. To this end, we propose a neural program synthesizer that is able to explicitly synthesize underlying programs from behaviorally diverse and visually complicated demonstration videos, as illustrated in the following figure.
+This project is a [TensorFlow](https://www.tensorflow.org/) implementation of [**Neural Program Synthesis from Diverse Demonstration Videos**](https://shaohua0116.github.io/demo2program/), which is published in ICML 2018. As interpreting decision making logic in demonstration videos is key to collaborating with and mimicking humans, our goal is to empower machines with this ability. To this end, we propose a neural program synthesizer that is able to explicitly synthesize underlying programs from behaviorally diverse and visually complicated demonstration videos, as illustrated in the following figure.
 
 <p align="center">
     <img src="asset/teaser.png" height="256"/>
@@ -43,7 +43,7 @@ The structure of the repository:
 
 ## Datasets
 
-### KAREL
+### Karel environment
 - You can find the codes for the Karel environments in [this directory](./karel_env)
 - To generate a dataset for Karel environments including programs and demonstrations, use the following script.
 ```bash
@@ -51,7 +51,7 @@ The structure of the repository:
 ```
 Default arguments are identical to the settings described in the paper.
 
-### ViZDoom
+### ViZDoom environment
 - To reproduce experiments in our paper, you need to install our [deterministic ViZDoom envrionment](https://github.com/HyeonwooNoh/ViZDoomDeterministic)
 - You can find the codes for the ViZDoom environments and detailed instructions in [this directory](./vizdoom_env)
 - To generate a dataset (vizdoom_dataset, vizdoom_dataset_ifelse) for the ViZDoom environment including programs and demonstrations, use the following script.

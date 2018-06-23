@@ -4,23 +4,24 @@
 This project is a [TensorFlow](https://www.tensorflow.org/) implementation of [**Neural Program Synthesis from Diverse Demonstration Videos**](https://shaohua0116.github.io/demo2program/), which is published in ICML 2018. As interpreting decision making logic in demonstration videos is key to collaborating with and mimicking humans, we goal is to empower machines with this ability. To this end, we propose a neural program synthesizer that is able to explicitly synthesize underlying programs from behaviorally diverse and visually complicated demonstration videos, as illustrated in the following figure.
 
 <p align="center">
-    <img src="asset/teaser.png" height="200"/>
+    <img src="asset/teaser.png" height="256"/>
 </p>
 
 Our proposed model consists three components:
 - *Demonstration Encoder* receives a demonstration video as input and produces an embedding that cap- tures an agent’s actions and perception.
 - *Summarizer Module* discovers and summarizes where actions diverge between demonstrations and upon which branching conditions subsequent actions are taken.
 - *Program Decoder* represents the summarized under- standing of demonstrations as a code sequence.
+
 The illustration of the overall architecture is as follows. For more details, please refer to the paper.
 
 <p align="center">
-    <img src="asset/model.jpg" height="200"/>
+    <img src="asset/model.jpg" height="256"/>
 </p>
 
 \*This code is still being developed and subject to change.
 
 ## Directories
-This repository has the following directory structure
+The structure of the repository:
 - ./: training and evaluation scripts
 - ./models: network models used for the experiments
 - ./karel: karel environment including dsl, interpreter and dataset generator / loader
@@ -38,7 +39,7 @@ This repository has the following directory structure
 - [Pillow](https://pillow.readthedocs.io/en/latest/installation.html#basic-installation)
 - [progressbar](https://pypi.python.org/pypi/progressbar2)
 - [ply](http://www.dabeaz.com/ply/)
-- [VizDoom Deterministic](https://github.com/HyeonwooNoh/ViZDoomDeterministic)
+- [ViZDoom Deterministic](https://github.com/HyeonwooNoh/ViZDoomDeterministic)
 
 ## Datasets
 
@@ -51,8 +52,8 @@ This repository has the following directory structure
 Default arguments are identical to the settings described in the paper.
 
 ### ViZDoom
-- To reproduce experiments in our paper, you need to install our [deterministic vizdoom envrionment](https://github.com/HyeonwooNoh/ViZDoomDeterministic)
-- You can find the codes for the Vizdoom environments and detailed instructions in [this directory](./vizdoom_world)
+- To reproduce experiments in our paper, you need to install our [deterministic ViZDoom envrionment](https://github.com/HyeonwooNoh/ViZDoomDeterministic)
+- You can find the codes for the ViZDoom environments and detailed instructions in [this directory](./vizdoom_world)
 - To generate a dataset (vizdoom_dataset, vizdoom_dataset_ifelse) for the ViZDoom environment including programs and demonstrations, use the following script.
 ```bash
 ./vizdoom_world/generate_dataset.sh
@@ -129,5 +130,5 @@ If you find this useful, please cite
 ```
 
 ## Authors
-[Shao-Hua Sun]\*(http://shaohua0116.github.io/), [Hyeonwoo Noh]\*(http://cvlab.postech.ac.kr/~hyeonwoonoh/), [Sriram Somasundaram](http://srirams32.github.io/), and [Joseph J. Lim](http://www-bcf.usc.edu/~limjj/)
+[Shao-Hua Sun](http://shaohua0116.github.io/)\*, [Hyeonwoo Noh](http://cvlab.postech.ac.kr/~hyeonwoonoh/)\*, [Sriram Somasundaram](http://srirams32.github.io/), and [Joseph J. Lim](http://www-bcf.usc.edu/~limjj/)
 (\*Equal contribution)

@@ -149,7 +149,7 @@ To verify the importance of inferring underlying conditions, we perform evaluati
 | Synthesis baseline |   59.9%   |  44.4%  |  36.1%   |
 | Ours-full          |   89.4%   |  69.1%  |  58.8%   |
 
-- Generation over different number of seen demonstrations
+- Generalization over different number of seen demonstrations
 
 The baseline models and our model trained with 25 seen demonstration are evaluated with fewer or more seen demonstrations.
 
@@ -157,7 +157,7 @@ The baseline models and our model trained with 25 seen demonstration are evaluat
     <img src="asset/generalization.png" height="256"/>
 </p> 
 
-## Related works
+## Related work
 
 * [Leveraging Grammar and Reinforcement Learning for Neural Program Synthesis](https://openreview.net/forum?id=H1Xw62kRZ) in ICLR 2018
 * [RobustFill: Neural Program Learning under Noisy I/O](https://arxiv.org/abs/1703.07469) in ICML 2017

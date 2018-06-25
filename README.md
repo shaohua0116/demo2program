@@ -1,7 +1,9 @@
 # Neural Program Synthesis from Diverse Demonstration Videos (Demo2Program)
 
 ## Descriptions
-This project is a [TensorFlow](https://www.tensorflow.org/) implementation of [**Neural Program Synthesis from Diverse Demonstration Videos**](https://shaohua0116.github.io/demo2program/), which is published in ICML 2018. As interpreting decision making logic in demonstration videos is key to collaborating with and mimicking humans, our goal is to empower machines with this ability. To this end, we propose a neural program synthesizer that is able to explicitly synthesize underlying programs from behaviorally diverse and visually complicated demonstration videos, as illustrated in the following figure.
+This project is a [TensorFlow](https://www.tensorflow.org/) implementation of [**Neural Program Synthesis from Diverse Demonstration Videos**](https://shaohua0116.github.io/demo2program/), which is published in ICML 2018. We provide codes and checkpoints for our model and all baselines presented in the paper. Also, we provide scripts and codes for generating datasets as well as the datasets we used to train and test all models.
+
+As interpreting decision making logic in demonstration videos is key to collaborating with and mimicking humans, our goal is to empower machines with this ability. To this end, we propose a neural program synthesizer that is able to explicitly synthesize underlying programs from behaviorally diverse and visually complicated demonstration videos, as illustrated in the following figure.
 
 <p align="center">
     <img src="asset/teaser.png" height="256"/>
@@ -85,14 +87,14 @@ python trainer.py --model induction_baseline --dataset_path /path/to/the/dataset
 
 - Arguments
     - --debug: set to `True` to see debugging visualization (LSTM masks, etc.)
-    - --prefix: a nickanme for the training
+    - --prefix: a nickname for the training
     - --model: specify which type of models to train/test
     - --dataset\_type: choose between `karel` and `vizdoom`. You can also add your own datasets.
     - --dataset\_path: specify the path to the dataset where you can find a HDF5 file and a .txt file
     - --checkpoint: specify the path to a pre-trained checkpoint
     - Logging
         - --log\_setp: the frequency of outputing log info ([train step  681] Loss: 0.51319 (1.896 sec/batch, 16.878 instances/sec))
-        - --write\_summary\_step: the frequency of writing TensorBoard sumamries (default 100)
+        - --write\_summary\_step: the frequency of writing TensorBoard summaries (default 100)
         - --test\_sample\_step: the frequency of performing testing inference during training (default 100)
     - Hyperparameters
         - --num\_k: the number of seen demonstrations (default 10)
@@ -106,7 +108,7 @@ python trainer.py --model induction_baseline --dataset_path /path/to/the/dataset
         - --demo\_aggregation: how to aggregate the demo features (default average pooling) for synthesis and induction baseline
 
 ### Testing
-- Evalute trained models
+- Evaluate trained models
 ```bash
 python evaler.py --dataset_path /path/to/the/dataset/ --dataset_type [karel/vizdoom] [--train_dir /path/to/the/training/dir/ OR --checkpoint /path/to/the/trained/model]
 ```
@@ -156,6 +158,30 @@ The baseline models and our model trained with 25 seen demonstration are evaluat
 <p align="center">
     <img src="asset/generalization.png" height="256"/>
 </p> 
+
+## Download datasets and checkpoints
+
+To reproduce our results, you can download our datasets and checkpoints.
+
+### Datasets
+
+While we provide the scripts and codes for generating customized datasets, we also made the datasets we used to train and test our models and baselines available.
+
+- Karel (13GB) \[[link](https://drive.google.com/drive/folders/124YGjRjbn9HsfUo2JuCdKvyT7lJh4iTv?usp=sharing)\]
+    - For the main Karel experiment (*Table 1*) and the summarizer experiment (*Table 2*)
+- ViZDoom (505GB) \[[link](https://drive.google.com/open?id=1atiBwgNXc2oykMC7C6yeBduQ2efV13nN)\]
+    - For the main ViZDoom experiment (*Table 3*) and the ViZDoom generalization experiment (*Figure 7*)
+- ViZDoom if-else (40GB) \[[link](https://drive.google.com/open?id=1isetfNsVnPN7WM0MPQVXNSgcLw22VRl2)\]
+    - For the ViZDoom if-else experiment (*Table 4*)
+
+### Checkpoints
+
+We provide checkpoints and evaluation report files of our models and baselines for all experiments.
+
+- Karel main experiment (*Table 1*) \[[link](https://drive.google.com/open?id=1LA2DmenxHlEwXglrkVbPLWC-ubf4gOUC)\]
+- Karel summarizer experiment (*Table 2*) \[[link](https://drive.google.com/open?id=1XdtBGqld-x87cYmiSeeiL3422jugSwCa)\]
+- ViZDoom main experiment (*Table 3* and *Figure 7*) \[[link](https://drive.google.com/open?id=1mc42IzlqI35St0_o6eKQkP9QYWnwbmjq)\]
+- ViZDoom if-else experiment (*Table 4*) \[[link](https://drive.google.com/open?id=1rCj9pOn26PS7ufg0b6znK4go_8GhLp02)\]
 
 ## Related work
 

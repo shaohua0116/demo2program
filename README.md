@@ -1,15 +1,15 @@
-# Neural Program Synthesis from Diverse Demonstration Videos (Demo2Program)
+# Neural Program Synthesis from Diverse Demonstration Videos
 
 ## Descriptions
-This project is a [TensorFlow](https://www.tensorflow.org/) implementation of [**Neural Program Synthesis from Diverse Demonstration Videos**](https://shaohua0116.github.io/demo2program/), which is published in ICML 2018. We provide codes and checkpoints for our model and all baselines presented in the paper. Also, we provide scripts and codes for generating datasets as well as the datasets we used to train and test all models.
+This project is a TensorFlow implementation of [**Neural Program Synthesis from Diverse Demonstration Videos**](https://shaohua0116.github.io/demo2program/), which is published in ICML 2018. We provide codes and checkpoints for our model and all baselines presented in the paper. Also, we provide scripts and codes for generating datasets as well as the datasets we used to train and test all models.
 
-As interpreting decision making logic in demonstration videos is key to collaborating with and mimicking humans, our goal is to empower machines with this ability. To this end, we propose a neural program synthesizer that is able to explicitly synthesize underlying programs from behaviorally diverse and visually complicated demonstration videos, as illustrated in the following figure.
+As interpreting decision making logic in demonstration videos is key to collaborating with and mimicking humans, our goal is to empower machines with this ability. To this end, we propose a **neural program synthesizer** that is able to explicitly synthesize underlying programs from behaviorally diverse and visually complicated demonstration videos, as illustrated in the following figure.
 
 <p align="center">
     <img src="asset/teaser.png" height="256"/>
 </p>
 
-We introduce a summarizer module as part of our model to improve the network’s ability to integrate multiple demonstrations varying in behavior. We also employ a multi-task objective to encourage the model to learn meaningful intermediate representations for end-to-end training. Our proposed model consists three components:
+We introduce a **summarizer module** as part of our model to improve the network’s ability to integrate multiple demonstrations varying in behavior. We also employ a **multi-task objective** to encourage the model to learn meaningful intermediate representations for end-to-end training. Our proposed model consists three components:
 - **Demonstration Encoder** receives a demonstration video as input and produces an embedding that captures an agent’s actions and perception.
 - **Summarizer Module** discovers and summarizes where actions diverge between demonstrations and upon which branching conditions subsequent actions are taken.
 - **Program Decoder** represents the summarized understanding of demonstrations as a code sequence.
@@ -110,7 +110,7 @@ python trainer.py --model induction_baseline --dataset_path /path/to/the/dataset
 ### Testing
 - Evaluate trained models
 ```bash
-python evaler.py --dataset_path /path/to/the/dataset/ --dataset_type [karel/vizdoom] [--train_dir /path/to/the/training/dir/ OR --checkpoint /path/to/the/trained/model]
+python evaler.py --model [full/synthesis_baseline/summarizer/induction_baseline] --dataset_path /path/to/the/dataset/ --dataset_type [karel/vizdoom] [--train_dir /path/to/the/training/dir/ OR --checkpoint /path/to/the/trained/model]
 ```
 
 ## Results
@@ -185,10 +185,21 @@ We provide checkpoints and evaluation report files of our models and baselines f
 
 ## Related work
 
+### Neural Program Synthesis
 * [Leveraging Grammar and Reinforcement Learning for Neural Program Synthesis](https://openreview.net/forum?id=H1Xw62kRZ) in ICLR 2018
 * [RobustFill: Neural Program Learning under Noisy I/O](https://arxiv.org/abs/1703.07469) in ICML 2017
 * [DeepCoder: Learning to Write Programs](https://arxiv.org/abs/1611.01989) in ICLR 2017
 * [Neuro-Symbolic Program Synthesis](https://arxiv.org/abs/1611.01855) in ICLR 2017
+
+### Neural Program Induction
+
+- [Neural Programmer-Interpreters](https://arxiv.org/abs/1511.06279) in ICLR 2016
+- [Neural Task Programming: Learning to Generalize Across Hierarchical Tasks](https://arxiv.org/abs/1710.01813) in ICRA 2018
+- [Neural Program Meta-Induction](https://arxiv.org/abs/1710.04157) in NIPS 2017
+- [Neural GPUs Learn Algorithms](https://arxiv.org/abs/1511.08228) in ICLR 2016
+
+
+### Misc
 * [One-Shot Imitation Learning](https://arxiv.org/abs/1703.07326) in NIPS 2017
 * [One-Shot Visual Imitation Learning via Meta-Learning](https://arxiv.org/abs/1709.04905) in CoRL 2017
 * [Awesome Neural Programming](https://github.com/andrewliao11/awesome-neural-programming)

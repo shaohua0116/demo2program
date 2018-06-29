@@ -113,8 +113,14 @@ class Evaler(object):
                     self.output_dir,
                     'out_{}_{}'.format(self.checkpoint_name, self.dataset_split))
                 text_file = open('{}.txt'.format(base_name), 'w')
-                from karel_env.dsl import get_KarelDSL
-                dsl = get_KarelDSL(dsl_type=self.dataset.dsl_type, seed=123)
+                if self.config.dataset_type == 'karel':
+                    from karel_env.dsl import get_KarelDSL
+                    dsl = get_KarelDSL(dsl_type=self.dataset.dsl_type, seed=123)
+                else:
+                    from vizdoom_env.dsl.vocab import VizDoomDSLVocab
+                    dsl = VizDoomDSLVocab(
+                        perception_type=self.dataset.perception_type,
+                        level=self.dataset.level)
 
                 hdf5_file = h5py.File('{}.hdf5'.format(base_name), 'w')
                 log_file = open('{}.log'.format(base_name), 'w')
@@ -429,7 +435,7 @@ def main():
 
     dataset_train, dataset_test, dataset_val = \
         dataset.create_default_splits(config.dataset_path,
-                                        is_train=False, num_k=config.num_k)
+                                      is_train=False, num_k=config.num_k)
     if config.dataset_split == 'train':
         target_dataset = dataset_train
     elif config.dataset_split == 'test':

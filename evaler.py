@@ -422,7 +422,7 @@ def main():
 
     if config.dataset_type == 'karel':
         import karel_env.dataset_karel as dataset
-    elif config.datasete_type == 'vizdoom':
+    elif config.dataset_type == 'vizdoom':
         import vizdoom_env.dataset_vizdoom as dataset
     else:
         raise ValueError(config.dataset)

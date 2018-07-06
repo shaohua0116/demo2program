@@ -209,7 +209,7 @@ If you find this useful, please cite
 ```
 @inproceedings{sun2018neural,
     title = {Neural Program Synthesis from Diverse Demonstration Videos},
-    author = {Shao-Hua Sun and Hyeonwoo Noh and Sriram Somasundaram and Joseph J Lim},
+    author = {Sun, Shao-Hua and Noh, Hyeonwoo and Somasundaram, Sriram and Lim, Joseph},
     booktitle = {Proceedings of the 35th International Conference on Machine Learning},
     year = {2018},
 }

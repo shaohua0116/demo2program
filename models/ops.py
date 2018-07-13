@@ -11,20 +11,6 @@ def lrelu(x, leak=0.2, name="lrelu"):
         return f1 * x + f2 * abs(x)
 
 
-def selu(x):
-    alpha = 1.6732632423543772848170429916717
-    scale = 1.0507009873554804934193349852946
-    return scale * tf.where(x > 0.0, x, alpha * tf.exp(x) - alpha)
-
-
-def huber_loss(labels, predictions, delta=1.0):
-    residual = tf.abs(predictions - labels)
-    condition = tf.less(residual, delta)
-    small_res = 0.5 * tf.square(residual)
-    large_res = delta * residual - 0.5 * tf.square(delta)
-    return tf.where(condition, small_res, large_res)
-
-
 def bn_act(input, is_train, batch_norm=True, activation_fn=None, name="bn_act"):
     with tf.variable_scope(name):
         _ = input

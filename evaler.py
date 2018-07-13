@@ -18,11 +18,11 @@ class Evaler(object):
     @staticmethod
     def get_model_class(model_name):
         if model_name == 'synthesis_baseline':
-            from models.model_synthesis_baseline import Model
+            from models.baselines.model_synthesis import Model
         elif model_name == 'induction_baseline':
-            from models.model_induction_baseline import Model
+            from models.baselines.model_induction import Model
         elif model_name == 'summarizer':
-            from models.model_summarizer import Model
+            from models.baselines.model_summarizer import Model
         elif model_name == 'full':
             from models.model_full import Model
         else:
@@ -363,7 +363,7 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--model', type=str, default='synthesis_baseline',
+    parser.add_argument('--model', type=str, default='full',
                         choices=['synthesis_baseline', 'induction_baseline',
                                  'summarizer', 'full'],
                         help='specify which type of models to evaluate')

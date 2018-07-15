@@ -192,8 +192,8 @@ def main():
                         help='number of seen demonstrations')
     parser.add_argument('--max_demo_generation_trial', type=int, default=100)
     args = parser.parse_args()
-
     args.dir_name = os.path.join('datasets/', args.dir_name)
+    check_path('datasets')
     check_path(args.dir_name)
 
     generator(args)

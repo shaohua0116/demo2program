@@ -313,6 +313,7 @@ def main():
     args = parser.parse_args()
 
     args.dir_name = os.path.join('datasets/', args.dir_name)
+    check_path('datasets')
     check_path(args.dir_name)
 
     generator(args)

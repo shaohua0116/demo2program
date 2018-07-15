@@ -317,6 +317,7 @@ def main():
         args.max_demo_length, args.seed)
 
     args.dir_name = os.path.join('datasets/', args.dir_name)
+    check_path('datasets')
     check_path(args.dir_name)
 
     generator(args)

@@ -355,7 +355,8 @@ class Model(object):
                 if aggregation == 'avgpool':  # [bs, v]
                     summary = tf.reduce_mean(features, axis=1)
                 elif aggregation == 'rn':  # [bs, v]
-                    summary = rn_pool(features, reuse=reuse)
+                    summary = tf.reduce_mean(features, axis=1) + \
+                        rn_pool(features, reuse=reuse)
                 else:
                     raise ValueError('Unknown demo aggregation type')
             return summary

@@ -169,8 +169,10 @@ While we provide the scripts and codes for generating customized datasets, we al
 
 - Karel (13GB) \[[link](https://drive.google.com/drive/folders/124YGjRjbn9HsfUo2JuCdKvyT7lJh4iTv?usp=sharing)\]
     - For the main Karel experiment (*Table 1*) and the summarizer experiment (*Table 2*)
-- ViZDoom (505GB) \[[link](https://drive.google.com/open?id=1atiBwgNXc2oykMC7C6yeBduQ2efV13nN)\]
+- ViZDoom full (505GB) \[[link](https://drive.google.com/open?id=1atiBwgNXc2oykMC7C6yeBduQ2efV13nN)\]
     - For the main ViZDoom experiment (*Table 3*) and the ViZDoom generalization experiment (*Figure 7*)
+    - ViZDoom shorter (248GB) \[[link](https://drive.google.com/open?id=1vDpKh_9ZhtJt5cglQ-Yw_dT6emdfGLB2)\]
+        - A subset of the Vizdoom full datsaet where only the shorter demos are included 
 - ViZDoom if-else (40GB) \[[link](https://drive.google.com/open?id=1isetfNsVnPN7WM0MPQVXNSgcLw22VRl2)\]
     - For the ViZDoom if-else experiment (*Table 4*)
 

@@ -113,6 +113,30 @@ python trainer.py --model induction_baseline --dataset_path /path/to/the/dataset
 python evaler.py --model [full/synthesis_baseline/summarizer/induction_baseline] --dataset_path /path/to/the/dataset/ --dataset_type [karel/vizdoom] [--train_dir /path/to/the/training/dir/ OR --checkpoint /path/to/the/trained/model]
 ```
 
+## Reproducing result on VizDoom dataset
+
+Because the size of the demonstrations in VizDoom is usually very large, it is difficult to use large batch size and results in very slow training.
+To circumvent this issue, we used two stage training; we pretrain our model with short demonstrations first and then finetune the model with the whole dataset.
+For the first stage of the training, we used batch size: 32, and for the second stage of the training, we used batch size: 8.
+Here are links to datasets that we used for the first and second stage of the training:
+- First stage: [vizdoom_shorter](https://drive.google.com/drive/folders/1vDpKh_9ZhtJt5cglQ-Yw_dT6emdfGLB2)
+- Second stage: [vizdoom_full](https://drive.google.com/drive/folders/1atiBwgNXc2oykMC7C6yeBduQ2efV13nN)
+
+To reproduce our result, you can train and evaluate models with the following command:
+- First stage: training for 50000 iterations
+```bash
+python trainer.py --model full --dataset_path path_to_vizdoom_shorter --dataset_type vizdoom --num_k 25 --batch_size 32
+```
+- Second stage: training for 50000 iterations
+```bash
+python trainer.py --model full --dataset_path path_to_vizdoom_full --dataset_type vizdoom --num_k 25 --batch_size 8 --checkpoint path_to_1st_step_checkpoint
+```
+
+For evaluation, use the following command:
+```bash
+python evaler.py --model full --dataset_path path_to_vizdoom_full --dataset_type vizdoom --num_k 25 --checkpoint path_to_2nd_step_checkpoint
+```
+
 ## Results
 
 ### Karel environment

@@ -1,6 +1,6 @@
 # Generate karel datasets
-python karel/generator.py
+python karel_env/generator.py
 # Append unseen demonstrations to each programs
-python karel/append_demonstration.py
+python karel_env/append_demonstration.py
 # Add perception primitives to each demonstrations
-python karel/add_per.py
+python karel_env/add_per.py

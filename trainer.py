@@ -246,7 +246,7 @@ def main():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--debug', action='store_true', default=False,
                         help='set to True to see debugging visualization')
-    parser.add_argument('--prefix', type=str, defiault='default',
+    parser.add_argument('--prefix', type=str, default='default',
                         help='a nickanme for the training')
     parser.add_argument('--model', type=str, default='full',
                         choices=['synthesis_baseline', 'induction_baseline',
@@ -289,6 +289,8 @@ def main():
                         help='how to aggregate the demo features')
 
     config = parser.parse_args()
+
+    import ipdb; ipdb.set_trace()
 
     if config.dataset_type == 'karel':
         import karel_env.dataset_karel as dataset

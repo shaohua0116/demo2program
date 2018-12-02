@@ -290,8 +290,6 @@ def main():
 
     config = parser.parse_args()
 
-    import ipdb; ipdb.set_trace()
-
     if config.dataset_type == 'karel':
         import karel_env.dataset_karel as dataset
         dataset_train, dataset_test, dataset_val \

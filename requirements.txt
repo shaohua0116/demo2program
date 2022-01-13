@@ -3,6 +3,6 @@ scipy==1.0.0
 numpy==1.14.2
 colorlog==3.1.0
 h5py==2.7.1
-Pillow==5.0.0
+Pillow==9.0.0
 progressbar==2.3
 ply==3.10
